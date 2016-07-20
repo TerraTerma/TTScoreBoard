@@ -1,0 +1,9 @@
+main: main.Main
+name: TTScoreBoard
+version: 0.1-DEV-BUILD
+author: JustMaffie
+authors: []
+commands:
+  sbreload:
+    description: Reload the Configurations
+    permission: sb.reload
