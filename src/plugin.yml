@@ -1,5 +1,5 @@
-main: me.JustMaffie.TTScoreBoard.main.Main
-name: TTScoreBoard
+main: me.JustMaffie.TerraTerma.TTScoreBoard.Main.TTScoreboard
+name: TTScoreboard
 version: 1.0
 author: JustMaffie
 description: Adds nametags to a player's name.

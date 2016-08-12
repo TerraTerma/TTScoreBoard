@@ -11,6 +11,8 @@ import org.bukkit.entity.Player;
 import org.bukkit.scoreboard.Scoreboard;
 import org.bukkit.scoreboard.Team;
 
+import me.JustMaffie.TerraTerma.TTScoreBoard.Config.PermissionsConfig;
+
 public class NameTagManager {
 	
   @SuppressWarnings({ "deprecation", "null" })
@@ -41,14 +43,15 @@ public class NameTagManager {
   }
   
   public static enum PermissionColours {
-  	OWNER("sb.owner", ChatColor.GOLD, ChatColor.BOLD),
-    HEAD_DEV("sb.headdev", ChatColor.DARK_AQUA, ChatColor.BOLD),
-    DEV("sb.dev", ChatColor.DARK_AQUA),
-    HEAD_ADMIN("sb.headadmin", ChatColor.BLUE, ChatColor.BOLD),
-    ADMIN("sb.admin", ChatColor.BLUE),
-    LEAD_MOD("sb.leadmod", ChatColor.RED, ChatColor.BOLD),
-    MOD("sb.mod", ChatColor.RED),
-    HELPER("sb.helper", ChatColor.AQUA);
+  	OWNER(PermissionsConfig.NAMETAG_OWNER.toString(), ChatColor.GOLD, ChatColor.BOLD),
+    HEAD_DEV(PermissionsConfig.NAMETAG_HEADDEV.toString(), ChatColor.DARK_AQUA, ChatColor.BOLD),
+    DEV(PermissionsConfig.NAMETAG_DEV.toString(), ChatColor.DARK_AQUA),
+    HEAD_ADMIN(PermissionsConfig.NAMETAG_HEADADMIN.toString(), ChatColor.BLUE, ChatColor.BOLD),
+    ADMIN(PermissionsConfig.NAMETAG_ADMIN.toString(), ChatColor.BLUE),
+    LEAD_MOD(PermissionsConfig.NAMETAG_LEADMOD.toString(), ChatColor.RED, ChatColor.BOLD),
+    MOD(PermissionsConfig.NAMETAG_MOD.toString(), ChatColor.RED),
+    HELPER(PermissionsConfig.NAMETAG_HELPER.toString(), ChatColor.AQUA),
+    DEFAULT(PermissionsConfig.NAMETAG_DEFAULT.toString(), ChatColor.GRAY);
     
     
     String PERMISSION;
