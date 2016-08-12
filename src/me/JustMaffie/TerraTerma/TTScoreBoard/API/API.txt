@@ -1,0 +1,16 @@
+# TTScoreboard
+
+Author: JustMaffie
+
+# API's
+TTScoreboard currently only has 1 API, the Permissions API, you can get/set the permissions for Nametags, here is an example void:
+
+public void setPermOfNameTag(){
+SBPermission.setPermission(SBPermissionType.OWNER, "PERMISSION");
+}
+
+and:
+
+public void getPermission(){
+SBPermission.getPermission(SBPermissionType.OWNER);
+}
