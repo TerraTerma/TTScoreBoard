@@ -4,9 +4,6 @@ version: 1.0
 author: JustMaffie
 description: Adds nametags to a player's name.
 commands:
-  sbreload:
-    description: Reload the Configurations
-    permission: sb.reload
   sbrenew:
     description: Renew something.
     permission: sb.renew
