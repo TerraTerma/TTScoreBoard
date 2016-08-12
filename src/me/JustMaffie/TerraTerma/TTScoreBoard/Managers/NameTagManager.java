@@ -3,7 +3,6 @@ package me.JustMaffie.TerraTerma.TTScoreBoard.Managers;
 
 
 import java.util.Arrays;
-import java.util.List;
 import java.util.Optional;
 
 import org.bukkit.ChatColor;
@@ -11,47 +10,38 @@ import org.bukkit.entity.Player;
 import org.bukkit.scoreboard.Scoreboard;
 import org.bukkit.scoreboard.Team;
 
-import me.JustMaffie.TerraTerma.TTScoreBoard.Config.PermissionsConfig;
+import TTCore.Entity.Living.Human.Player.TTPlayer;
 
 public class NameTagManager {
 	
-  @SuppressWarnings({ "deprecation", "null" })
-  public static void renewNameTag(Player player){
-      List<PermissionColours> permissions = Arrays.asList(PermissionColours.values());
-      Optional<PermissionColours> opPermission = permissions.stream().filter(p -> {
-          return (player.hasPermission(p.getPermission()));
-      }).findFirst();
-    
-      if(opPermission.isPresent()){
-          PermissionColours permission = opPermission.get();
+  @SuppressWarnings("deprecation")
+  public static void renewNameTag(TTPlayer player){
+      PermissionColours permission = PermissionColours.getColour(player);
+      Player bPlayer = player.getPlayer();
           //has a permission
-          Scoreboard board = player.getScoreboard();
-          String name = player.getName();
+          Scoreboard board = bPlayer.getScoreboard();
+          String name = bPlayer.getName();
           Team team = board.getTeam(name);
           if(team != null){
               team.setPrefix(permission.getColour());
-              team.addPlayer(player);
-          }else if (team.getPrefix().equals(permission.getColour())){
-              team.setPrefix(permission.getColour());
-              team.addPlayer(player);
+              team.addPlayer(bPlayer);
           }else{
               team = board.registerNewTeam(name);
               team.setPrefix(permission.getColour());
-              team.addPlayer(player);
+              team.addPlayer(bPlayer);
           }
-      }
   }
   
   public static enum PermissionColours {
-  	OWNER(PermissionsConfig.NAMETAG_OWNER.toString(), ChatColor.GOLD, ChatColor.BOLD),
-    HEAD_DEV(PermissionsConfig.NAMETAG_HEADDEV.toString(), ChatColor.DARK_AQUA, ChatColor.BOLD),
-    DEV(PermissionsConfig.NAMETAG_DEV.toString(), ChatColor.DARK_AQUA),
-    HEAD_ADMIN(PermissionsConfig.NAMETAG_HEADADMIN.toString(), ChatColor.BLUE, ChatColor.BOLD),
-    ADMIN(PermissionsConfig.NAMETAG_ADMIN.toString(), ChatColor.BLUE),
-    LEAD_MOD(PermissionsConfig.NAMETAG_LEADMOD.toString(), ChatColor.RED, ChatColor.BOLD),
-    MOD(PermissionsConfig.NAMETAG_MOD.toString(), ChatColor.RED),
-    HELPER(PermissionsConfig.NAMETAG_HELPER.toString(), ChatColor.AQUA),
-    DEFAULT(PermissionsConfig.NAMETAG_DEFAULT.toString(), ChatColor.GRAY);
+  	OWNER("owner", ChatColor.GOLD, ChatColor.BOLD),
+    HEAD_DEV("headdev", ChatColor.DARK_AQUA, ChatColor.BOLD),
+    DEV("developer", ChatColor.DARK_AQUA),
+    HEAD_ADMIN("headadmin", ChatColor.BLUE, ChatColor.BOLD),
+    ADMIN("Admins", ChatColor.BLUE),
+    LEAD_MOD("Lead-Mod", ChatColor.RED, ChatColor.BOLD),
+    MOD("moderator", ChatColor.RED),
+    HELPER("helper", ChatColor.AQUA),
+    DEFAULT("default", ChatColor.GRAY);
     
     
     String PERMISSION;
@@ -80,5 +70,14 @@ public class NameTagManager {
           	return COLOUR + "" + SECONDARY;
       	}
   	}
+    
+    public static PermissionColours getColour(TTPlayer player){
+    	String group = player.getPermissionGroup().getName();
+    	Optional<PermissionColours> opColour = Arrays.asList(values()).stream().filter(c -> c.getPermission().equals(group)).findFirst();
+    	if(opColour.isPresent()){
+    		return opColour.get();
+    	}
+    	return DEFAULT;
+    }
   }
 }
