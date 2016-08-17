@@ -41,7 +41,10 @@ public class NameTagManager {
     LEAD_MOD("Lead-Mod", ChatColor.RED, ChatColor.BOLD),
     MOD("moderator", ChatColor.RED),
     HELPER("helper", ChatColor.AQUA),
-    DEFAULT("default", ChatColor.GRAY);
+    BUILDER("builder", ChatColor.DARK_GREEN),
+    YOUTUBER("youtuber", ChatColor.YELLOW),
+    DEFAULT("default", ChatColor.GRAY);	
+	  
     
     
     String PERMISSION;
