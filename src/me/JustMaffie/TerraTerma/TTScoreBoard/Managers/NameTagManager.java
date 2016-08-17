@@ -43,6 +43,10 @@ public class NameTagManager {
     HELPER("helper", ChatColor.AQUA),
     BUILDER("builder", ChatColor.DARK_GREEN),
     YOUTUBER("youtuber", ChatColor.YELLOW),
+    STARLORD("starlord", ChatColor.GOLD),
+    VIPPLUS("vip+", ChatColor.GOLD),
+    VIP("vip", ChatColor.GOLD),
+    VIPMINUS("vip-", ChatColor.GOLD),
     DEFAULT("default", ChatColor.GRAY);	
 	  
     
