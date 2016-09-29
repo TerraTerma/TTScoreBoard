@@ -1,0 +1,9 @@
+main: me.JustMaffie.TerraTerma.TTScoreBoard.Main.TTScoreboard
+name: TTScoreboard
+version: 1.0
+author: JustMaffie
+description: Adds nametags to a player's name.
+commands:
+  sbrenew:
+    description: Renew something.
+    permission: sb.renew

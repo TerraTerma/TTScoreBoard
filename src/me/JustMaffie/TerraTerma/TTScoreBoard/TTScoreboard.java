@@ -13,7 +13,7 @@ public class TTScoreboard extends JavaPlugin{
 	public void onEnable(){
 		PLUGIN = this;		
 		// COMMANDS
-		getCommand("sbrenew").setExecutor(new Renew());
+		new Renew(this);
 		
 		// EVENTS
 		Bukkit.getPluginManager().registerEvents(new JoinListener(), this);
